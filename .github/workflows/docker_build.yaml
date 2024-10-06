@@ -2,7 +2,7 @@ on:
   push:
     branches: [ "main" ]
 env:
-  CR_URI: medegor44.cr.cloud.ru/echo-bot
+  CR_URI: medegor44.cr.cloud.ru
 jobs:
   build:
     runs-on: ubuntu-latest
