@@ -27,3 +27,11 @@ jobs:
           tags: ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
           file: ./Dockerfile
           context: .
+
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{secrets.SSH_DEPLOY_KEY}}
+          script: whoami
