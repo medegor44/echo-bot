@@ -40,4 +40,4 @@ jobs:
             docker stop bot
             docker rm bot
             docker pull ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
-            docker run -e BOT_API_TOKEN=${{BOT_API_TOKEN}} -n bot ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
+            docker run -e BOT_API_TOKEN=${{ secrets.BOT_API_TOKEN }} -n bot ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
