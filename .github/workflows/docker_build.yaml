@@ -34,4 +34,10 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{secrets.SSH_DEPLOY_KEY}}
-          script: whoami
+          script: |
+            sudo su
+            docker login -u ${{ secrets.EVO_CR_LOGIN }} -p ${{ secrets.EVO_CR_PWD }}
+            docker stop bot
+            docker rm bot
+            docker pull ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
+            docker run -e BOT_API_TOKEN=${{BOT_API_TOKEN}} -n bot ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
