@@ -39,4 +39,4 @@ jobs:
             sudo docker stop bot
             sudo docker rm bot
             sudo docker pull ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
-            sudo docker run -e BOT_API_TOKEN=${{ secrets.BOT_API_TOKEN }} --name bot ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
+            sudo docker run -e BOT_API_TOKEN=${{ secrets.BOT_API_TOKEN }} --name bot -d ${{ env.CR_URI }}/echo-bot:${{ github.sha }}
